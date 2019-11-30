@@ -13,4 +13,12 @@ export const Subtitle = styled.span`
   margin: 0;
   font-size: 0.7em;
   color: ${props => props.theme.secondaryTextColor};
+  a {
+    text-decoration: none;
+    color: ${props => props.theme.secondaryTextColor};
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
