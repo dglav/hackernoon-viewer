@@ -3,7 +3,7 @@ import { ThemeContext } from "../../context/theme.context";
 
 import { BodyContainer } from "./body.styles";
 
-import Tab from "../tab/tab.component";
+import Feed from "../feed/feed.component";
 
 const Body = () => {
   const theme = useContext(ThemeContext);
@@ -36,7 +36,7 @@ const Body = () => {
           <label htmlFor="tab2">Favorites</label>
         </li>
       </ul>
-      {selectedTab === "Feed" ? <p>Feed Content</p> : <p>Favorites Content</p>}
+      {selectedTab === "Feed" ? <Feed /> : <p>Favorites Content</p>}
     </BodyContainer>
   );
 };

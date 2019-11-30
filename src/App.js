@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React from "react";
 import ThemeContextProvider from "./context/theme.context";
 
 import { AppContainer } from "./App.styles";
