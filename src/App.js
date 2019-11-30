@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext } from "react";
+import ThemeContextProvider from "./context/theme.context";
+
+import { AppContainer } from "./App.styles";
+
+import Header from "./components/header/header.component";
+import Footer from "./components/footer/footer.component";
+import Body from "./components/body/body.component";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeContextProvider>
+      <AppContainer>
+        <Header />
+        <Body />
+        <Footer />
+      </AppContainer>
+    </ThemeContextProvider>
   );
 }
 
