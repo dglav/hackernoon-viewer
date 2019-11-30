@@ -27,8 +27,10 @@ export const BodyContainer = styled.div`
         &:checked + label {
           padding-top: 20px;
           background-color: ${props => props.theme.darkPrimaryColor};
+          border-right: none;
         }
       }
+
       label {
         display: block;
         width: 100px;
@@ -36,6 +38,7 @@ export const BodyContainer = styled.div`
         cursor: pointer;
         text-align: center;
         background-color: ${props => props.theme.defaultPrimaryColor};
+        border-radius: 10px 10px 0 0;
 
         &:hover {
           background-color: ${props => props.theme.darkPrimaryColor};

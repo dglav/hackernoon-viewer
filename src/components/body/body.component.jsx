@@ -13,6 +13,19 @@ const Body = () => {
     setSelectedTab(tabName);
   };
 
+  const renderSwitch = selectedTab => {
+    switch (selectedTab) {
+      case "Feed":
+        return <Feed />;
+      case "Bookmarks":
+        return <p>Bookmarks</p>;
+      case "Favorites":
+        return <p>Favorites</p>;
+      default:
+        return null;
+    }
+  };
+
   return (
     <BodyContainer theme={theme}>
       <ul>
@@ -31,12 +44,21 @@ const Body = () => {
             type="radio"
             id="tab2"
             name="tab"
+            onClick={() => onTabClick("Bookmarks")}
+          />
+          <label htmlFor="tab2">Bookmarks</label>
+        </li>
+        <li>
+          <input
+            type="radio"
+            id="tab3"
+            name="tab"
             onClick={() => onTabClick("Favorites")}
           />
-          <label htmlFor="tab2">Favorites</label>
+          <label htmlFor="tab3">Favorites</label>
         </li>
       </ul>
-      {selectedTab === "Feed" ? <Feed /> : <p>Favorites Content</p>}
+      {renderSwitch(selectedTab)}
     </BodyContainer>
   );
 };
