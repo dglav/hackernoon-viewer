@@ -7,7 +7,6 @@ import styled from "styled-components";
 export const BodyContainer = styled.div`
   width: 70%;
   box-sizing: border-box;
-  height: 100px;
   margin: 16px auto;
   color: ${props => props.theme.primaryTextColor};
 
@@ -43,9 +42,5 @@ export const BodyContainer = styled.div`
         }
       }
     }
-  }
-  p {
-    margin: 0;
-    background-color: ${props => props.theme.defaultPrimaryColor};
   }
 `;

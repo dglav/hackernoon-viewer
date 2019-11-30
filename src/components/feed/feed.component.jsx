@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../../context/theme.context";
+
+import { FeedContainer } from "./feed.styles";
+
+import PostCard from "../post-card/post-card.component";
 
 const Feed = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
+  const theme = useContext(ThemeContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -31,17 +37,17 @@ const Feed = () => {
   }, []);
 
   return (
-    <React.Fragment>
+    <FeedContainer theme={theme}>
       {isLoading ? (
         <p>Loading State</p>
       ) : (
         <div>
           {posts.map(post => {
-            return <p key={post.id}>{post.title}: test</p>;
+            return <PostCard key={post.id} postData={post} />;
           })}
         </div>
       )}
-    </React.Fragment>
+    </FeedContainer>
   );
 };
 
