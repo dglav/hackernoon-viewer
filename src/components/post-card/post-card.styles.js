@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const PostCardContainer = styled.div`
   padding: 8px;
   position: relative;
-  overflow: hidden;
   &:first-child {
     #IconTray {
       border-radius: 0 0 0 10px;

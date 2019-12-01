@@ -51,4 +51,5 @@ export const TabContainer = styled.div`
 export const ContentContainer = styled.div`
   border: 6px solid ${props => props.theme.darkPrimaryColor};
   border-radius: 0 0 10px 10px;
+  overflow: hidden;
 `;
