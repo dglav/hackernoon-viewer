@@ -35,7 +35,8 @@ export const Subtitle = styled.span`
 `;
 
 export const IconTray = styled.div`
-  display: ${props => (props.iconTrayDisplay ? "flex" : "none")};
+  display: flex;
+  visibility: ${props => (props.iconTrayDisplay ? "visible" : "hidden")}
   position: absolute;
   right: 0;
   top: 0;
