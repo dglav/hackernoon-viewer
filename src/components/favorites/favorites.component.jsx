@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { firestore } from "../../firebase/firebase.utils";
 
 import { PostsContext } from "../../context/posts/posts.context";
 import { deleteFavorite } from "../../context/posts/posts.actions";

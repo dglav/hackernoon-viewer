@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const IconTrayContainer = styled.div`
   display: flex;
-  visibility: ${props => (props.iconTrayDisplay ? "visible" : "hidden")};
+  visibility: ${props => (props.iconTrayVisibility ? "visible" : "hidden")};
   position: absolute;
   right: 0;
   top: 0;

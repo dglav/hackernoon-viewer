@@ -18,12 +18,12 @@ const PostCard = ({ postData, parent, iconClickHandler }) => {
   const formattedTimeAgo = timeAgo.format(time * 1000);
   const commentUrl = `https://news.ycombinator.com/item?id=${id}`;
 
-  const [iconTrayDisplay, setIconTrayDisplay] = useState(false);
+  const [iconTrayVisibility, setIconTrayVisibility] = useState(false);
   const [iconTrayAnimation, setIconTrayAnimation] = useState("");
 
   const toggleHover = hoverState => {
     if (hoverState) {
-      setIconTrayDisplay(true);
+      setIconTrayVisibility(true);
       setIconTrayAnimation("slideInRight");
     } else {
       setIconTrayAnimation("slideOutRight");
@@ -51,7 +51,7 @@ const PostCard = ({ postData, parent, iconClickHandler }) => {
       <IconTray
         postData={postData}
         parent={parent}
-        iconTrayDisplay={iconTrayDisplay}
+        iconTrayVisibility={iconTrayVisibility}
         animation={iconTrayAnimation}
         iconClickHandler={iconClickHandler}
       />

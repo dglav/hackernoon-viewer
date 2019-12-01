@@ -9,7 +9,7 @@ const IconTray = ({
   postData,
   parent,
   iconClickHandler,
-  iconTrayDisplay,
+  iconTrayVisibility,
   animation
 }) => {
   const theme = useContext(ThemeContext);
@@ -18,7 +18,7 @@ const IconTray = ({
   return (
     <IconTrayContainer
       theme={theme}
-      iconTrayDisplay={iconTrayDisplay}
+      iconTrayVisibility={iconTrayVisibility}
       id="IconTray"
       className={`animated ${animation}`}
     >

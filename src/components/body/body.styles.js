@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 // Lessons Learned:
 // * Be careful where you define flex. If it's in the parent element, it's going to set the height of the entire parent element based on the height of the tallest child.
@@ -23,18 +23,19 @@ export const TabContainer = styled.div`
         position: absolute;
         top: 0;
         left: -100px;
-
         &:checked + label {
-          padding-top: 20px;
           background-color: ${props => props.theme.darkPrimaryColor};
           border-right: none;
         }
       }
 
       label {
-        display: block;
-        width: 100px;
-        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 128px;
+        height: 56px;
         cursor: pointer;
         text-align: center;
         background-color: ${props => props.theme.defaultPrimaryColor};
@@ -54,4 +55,27 @@ export const ContentContainer = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const IconContainer = styled.i`
+  margin-top: 4px;
+  display: ${props => (props.visible ? "block" : "none")};
+  animation: ${props => {
+    console.log(props);
+    return props.syncing
+      ? css`
+          ${rotate} 2s linear infinite
+        `
+      : css`none`;
+  }};
 `;
