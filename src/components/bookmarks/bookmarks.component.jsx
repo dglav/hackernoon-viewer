@@ -1,4 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+
+import { selectFilteredPosts } from "../../context/posts/posts.selectors";
 
 import { PostsContext } from "../../context/posts/posts.context";
 import { deleteBookmark } from "../../context/posts/posts.actions";
@@ -7,16 +9,22 @@ import {} from "./bookmarks.styles";
 
 import PostCard from "../post-card/post-card.component";
 
-const Favorites = () => {
+const Favorites = ({ searchQuery }) => {
   const {
     posts: { bookmarks },
     dispatch
   } = useContext(PostsContext);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
+  useEffect(() => {
+    const filteredPosts = selectFilteredPosts(bookmarks, searchQuery);
+    setFilteredPosts(filteredPosts);
+  }, [searchQuery]);
 
   return (
     <React.Fragment>
-      {bookmarks.length ? (
-        bookmarks.map(post => {
+      {filteredPosts.length ? (
+        filteredPosts.map(post => {
           return (
             <PostCard
               key={post.id}

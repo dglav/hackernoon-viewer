@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { selectFilteredPosts } from "../../context/posts/posts.selectors";
+
 import PostCard from "../post-card/post-card.component";
 
 const Feed = ({ searchQuery }) => {
@@ -35,15 +37,7 @@ const Feed = ({ searchQuery }) => {
   }, []);
 
   useEffect(() => {
-    const filteredPosts = searchQuery
-      ? posts.filter(post => {
-          if (
-            post.title.includes(searchQuery) ||
-            post.url.includes(searchQuery)
-          )
-            return post;
-        })
-      : posts;
+    const filteredPosts = selectFilteredPosts(posts, searchQuery);
     setFilteredPosts(filteredPosts);
   }, [searchQuery]);
 
