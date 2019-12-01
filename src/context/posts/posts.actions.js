@@ -13,3 +13,17 @@ export const deleteFavorite = postId => {
     payload: postId
   };
 };
+
+export const addBookmark = post => {
+  return {
+    type: postTypes.ADD_BOOKMARK,
+    payload: post
+  };
+};
+
+export const deleteBookmark = postId => {
+  return {
+    type: postTypes.DELETE_BOOKMARK,
+    payload: postId
+  };
+};
