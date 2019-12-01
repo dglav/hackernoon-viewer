@@ -1,9 +1,12 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "../../context/theme.context";
+import PostsContextProvider from "../../context/posts.context";
 
 import { TabContainer, ContentContainer } from "./body.styles";
 
 import Feed from "../feed/feed.component";
+import Bookmarks from "../bookmarks/bookmarks.component";
+import Favorites from "../favorites/favorites.component";
 
 const Body = () => {
   const theme = useContext(ThemeContext);
@@ -18,9 +21,9 @@ const Body = () => {
       case "Feed":
         return <Feed />;
       case "Bookmarks":
-        return <p>Bookmarks</p>;
+        return <Bookmarks />;
       case "Favorites":
-        return <p>Favorites</p>;
+        return <Favorites />;
       default:
         return null;
     }
@@ -58,9 +61,11 @@ const Body = () => {
           <label htmlFor="tab3">Favorites</label>
         </li>
       </ul>
-      <ContentContainer theme={theme}>
-        {renderSwitch(selectedTab)}
-      </ContentContainer>
+      <PostsContextProvider>
+        <ContentContainer theme={theme}>
+          {renderSwitch(selectedTab)}
+        </ContentContainer>
+      </PostsContextProvider>
     </TabContainer>
   );
 };

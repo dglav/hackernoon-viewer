@@ -57,13 +57,13 @@ const PostCard = ({
         id="IconTray"
         className={`animated ${slideAnimation}`}
       >
-        <IconContainer onClick={""}>
+        <IconContainer>
           <i className="far fa-bookmark"></i>
         </IconContainer>
-        <IconContainer onClick={""}>
+        <IconContainer>
           <i className="far fa-star"></i>
         </IconContainer>
-        <IconContainer onClick={""}>
+        <IconContainer>
           <i className="fas fa-times"></i>
         </IconContainer>
       </IconTray>
