@@ -1,21 +1,16 @@
 import styled from "styled-components";
 
-export const IconTray = styled.div`
-  display: ${props => {
-    console.log(props.hoverState);
-    return props.hoverState ? "flex" : "none";
-  }};
+export const IconTrayContainer = styled.div`
+  display: flex;
+  visibility: ${props => (props.iconTrayDisplay ? "visible" : "hidden")};
   position: absolute;
-  right: -8px;
-  top: -8px;
+  right: 0;
+  top: 0;
   justify-content: right;
   align-items: center;
-  height: calc(100% + 16px);
+  height: 100%;
   background-color: ${props => props.theme.accentColor};
-
-  &:last-child {
-    border-radius: 0 0 4px 0;
-  }
+  border-radius: 10px 0 0 10px;
 `;
 
 export const IconContainer = styled.div`

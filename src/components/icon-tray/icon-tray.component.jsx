@@ -1,21 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../context/theme/theme.context";
+import { PostsContext } from "../../context/posts/posts.context";
+import { addFavorite, addBookmark } from "../../context/posts/posts.actions";
 
 import { IconTrayContainer, IconContainer } from "./icon-tray.styles";
 
-const IconTray = () => {
+const IconTray = ({
+  postData,
+  parent,
+  iconClickHandler,
+  iconTrayDisplay,
+  animation
+}) => {
+  const theme = useContext(ThemeContext);
+  const { dispatch } = useContext(PostsContext);
+
   return (
-    <IconTrayContainer>
-      <IconContainer>
-        <IconContainer>
+    <IconTrayContainer
+      theme={theme}
+      iconTrayDisplay={iconTrayDisplay}
+      id="IconTray"
+      className={`animated ${animation}`}
+    >
+      {parent === "bookmarks" ? null : (
+        <IconContainer onClick={() => dispatch(addBookmark(postData))}>
           <i className="far fa-bookmark"></i>
         </IconContainer>
-        <IconContainer>
+      )}
+
+      {parent === "favorites" ? null : (
+        <IconContainer onClick={() => dispatch(addFavorite(postData))}>
           <i className="far fa-star"></i>
         </IconContainer>
-        <IconContainer>
+      )}
+
+      {parent === "feed" ? null : (
+        <IconContainer onClick={() => iconClickHandler()}>
           <i className="fas fa-times"></i>
         </IconContainer>
-      </IconContainer>
+      )}
     </IconTrayContainer>
   );
 };
