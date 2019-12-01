@@ -35,7 +35,7 @@ const IconTray = ({
       )}
 
       {parent === "feed" ? null : (
-        <IconContainer onClick={() => iconClickHandler()}>
+        <IconContainer onClick={iconClickHandler}>
           <i className="fas fa-times"></i>
         </IconContainer>
       )}

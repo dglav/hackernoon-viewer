@@ -18,7 +18,7 @@ const Favorites = ({ searchQuery }) => {
   useEffect(() => {
     const filteredPosts = selectFilteredPosts(favorites, searchQuery);
     setFilteredPosts(filteredPosts);
-  }, [searchQuery]);
+  }, [favorites, searchQuery]);
 
   return (
     <React.Fragment>

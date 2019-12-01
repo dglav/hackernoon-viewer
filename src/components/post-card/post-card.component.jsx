@@ -10,7 +10,7 @@ import { PostCardContainer, Title, Subtitle } from "./post-card.styles";
 
 TimeAgo.addLocale(en);
 
-const PostCard = ({ postData, parent }) => {
+const PostCard = ({ postData, parent, iconClickHandler }) => {
   const { id, by, time, title, url, score, descendants } = postData;
   const theme = useContext(ThemeContext);
 
@@ -53,6 +53,7 @@ const PostCard = ({ postData, parent }) => {
         parent={parent}
         iconTrayDisplay={iconTrayDisplay}
         animation={iconTrayAnimation}
+        iconClickHandler={iconClickHandler}
       />
     </PostCardContainer>
   );

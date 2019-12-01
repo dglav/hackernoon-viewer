@@ -19,7 +19,7 @@ const Favorites = ({ searchQuery }) => {
   useEffect(() => {
     const filteredPosts = selectFilteredPosts(bookmarks, searchQuery);
     setFilteredPosts(filteredPosts);
-  }, [searchQuery]);
+  }, [bookmarks, searchQuery]);
 
   return (
     <React.Fragment>
