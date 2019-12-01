@@ -14,7 +14,7 @@ const Feed = () => {
       );
       const response = await fetcher.json();
 
-      const responseToDisplay = response.slice(0, 2);
+      const responseToDisplay = response.slice(0, 5);
 
       const posts = responseToDisplay.map(async postId => {
         const postFetcher = await fetch(
