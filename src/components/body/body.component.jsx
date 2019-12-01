@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "../../context/theme.context";
 
-import { BodyContainer } from "./body.styles";
+import { TabContainer, ContentContainer } from "./body.styles";
 
 import Feed from "../feed/feed.component";
 
@@ -27,7 +27,7 @@ const Body = () => {
   };
 
   return (
-    <BodyContainer theme={theme}>
+    <TabContainer theme={theme}>
       <ul>
         <li>
           <input
@@ -58,8 +58,10 @@ const Body = () => {
           <label htmlFor="tab3">Favorites</label>
         </li>
       </ul>
-      {renderSwitch(selectedTab)}
-    </BodyContainer>
+      <ContentContainer theme={theme}>
+        {renderSwitch(selectedTab)}
+      </ContentContainer>
+    </TabContainer>
   );
 };
 

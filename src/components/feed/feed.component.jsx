@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
-import { ThemeContext } from "../../context/theme.context";
-
-import { FeedContainer } from "./feed.styles";
+import React, { useState, useEffect } from "react";
 
 import PostCard from "../post-card/post-card.component";
 
 const Feed = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
-  const theme = useContext(ThemeContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -37,7 +33,7 @@ const Feed = () => {
   }, []);
 
   return (
-    <FeedContainer theme={theme}>
+    <React.Fragment>
       {isLoading ? (
         <p>Loading State</p>
       ) : (
@@ -47,7 +43,7 @@ const Feed = () => {
           })}
         </div>
       )}
-    </FeedContainer>
+    </React.Fragment>
   );
 };
 
