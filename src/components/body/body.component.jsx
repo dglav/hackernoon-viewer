@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { ThemeContext } from "../../context/theme.context";
-import PostsContextProvider from "../../context/posts.context";
+import { ThemeContext } from "../../context/theme/theme.context";
+import PostsContextProvider from "../../context/posts/posts.context";
 
 import { TabContainer, ContentContainer } from "./body.styles";
 

@@ -39,7 +39,7 @@ const Feed = () => {
       ) : (
         <div>
           {posts.map(post => {
-            return <PostCard key={post.id} postData={post} />;
+            return <PostCard key={post.id} postData={post} parent="feed" />;
           })}
         </div>
       )}

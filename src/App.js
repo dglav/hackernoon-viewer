@@ -1,5 +1,5 @@
 import React from "react";
-import ThemeContextProvider from "./context/theme.context";
+import ThemeContextProvider from "./context/theme/theme.context";
 
 import { AppContainer } from "./App.styles";
 
