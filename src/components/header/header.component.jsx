@@ -8,7 +8,6 @@ const Header = () => {
   return (
     <HeaderContainer theme={theme}>
       <p>Hacker News</p>
-      <input type="text" placeholder="Search"></input>
       <button>Login! *</button>
     </HeaderContainer>
   );

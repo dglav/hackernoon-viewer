@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 
 import PostCard from "../post-card/post-card.component";
 
-const Feed = () => {
+const Feed = ({ searchQuery }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -27,10 +28,24 @@ const Feed = () => {
       Promise.all(posts).then(resolvedPosts => {
         setPosts(resolvedPosts);
         setIsLoading(false);
+        setFilteredPosts(resolvedPosts);
       });
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const filteredPosts = searchQuery
+      ? posts.filter(post => {
+          if (
+            post.title.includes(searchQuery) ||
+            post.url.includes(searchQuery)
+          )
+            return post;
+        })
+      : posts;
+    setFilteredPosts(filteredPosts);
+  }, [searchQuery]);
 
   return (
     <React.Fragment>
@@ -38,7 +53,7 @@ const Feed = () => {
         <p>Loading State</p>
       ) : (
         <div>
-          {posts.map(post => {
+          {filteredPosts.map(post => {
             return <PostCard key={post.id} postData={post} parent="feed" />;
           })}
         </div>
