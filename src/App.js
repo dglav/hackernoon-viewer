@@ -1,5 +1,6 @@
 import React from "react";
 import ThemeContextProvider from "./context/theme/theme.context";
+import PostsContextProvider from "./context/posts/posts.context";
 
 import { AppContainer } from "./App.styles";
 
@@ -12,7 +13,9 @@ function App() {
     <ThemeContextProvider>
       <AppContainer>
         <Header />
-        <Body />
+        <PostsContextProvider>
+          <Body />
+        </PostsContextProvider>
         <Footer />
       </AppContainer>
     </ThemeContextProvider>

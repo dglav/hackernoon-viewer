@@ -70,12 +70,10 @@ const rotate = keyframes`
 export const IconContainer = styled.i`
   margin-top: 4px;
   display: ${props => (props.visible ? "block" : "none")};
-  animation: ${props => {
-    console.log(props);
-    return props.syncing
+  animation: ${props =>
+    props.syncing
       ? css`
           ${rotate} 2s linear infinite
         `
-      : css`none`;
-  }};
+      : css`none`};
 `;

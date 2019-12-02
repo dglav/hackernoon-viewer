@@ -1,6 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "../../context/theme/theme.context";
-import PostsContextProvider from "../../context/posts/posts.context";
+import { PostsContext } from "../../context/posts/posts.context";
+
+import { addFavorite, addBookmark } from "../../context/posts/posts.actions";
+
+import {
+  readFromDatabase,
+  syncWithDatabase
+} from "../../firebase/firebase.utils";
 
 import { TabContainer, ContentContainer, IconContainer } from "./body.styles";
 
@@ -11,13 +18,25 @@ import SearchBar from "../search-bar/search-bar.component";
 
 const Body = () => {
   const theme = useContext(ThemeContext);
-  const [selectedTab, setSelectedTab] = useState("Feed");
+  const { posts, dispatch } = useContext(PostsContext);
+  const [selectedTab, setSelectedTab] = useState("feed");
   const [searchQuery, setSearchQuery] = useState("");
   const [syncing, setSyncing] = useState(false);
 
+  useEffect(() => {
+    async function syncFromDatabase() {
+      const favorites = await readFromDatabase("favorites");
+      favorites.forEach(post => dispatch(addFavorite(post)));
+
+      const bookmarks = await readFromDatabase("bookmarks");
+      bookmarks.forEach(post => dispatch(addBookmark(post)));
+    }
+    syncFromDatabase();
+  }, []);
+
   const sync = async tabName => {
     setSyncing(true);
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await syncWithDatabase(tabName, posts[tabName]);
     setSyncing(false);
   };
 
@@ -30,11 +49,11 @@ const Body = () => {
 
   const renderSwitch = selectedTab => {
     switch (selectedTab) {
-      case "Feed":
+      case "feed":
         return <Feed searchQuery={searchQuery} />;
-      case "Bookmarks":
+      case "bookmarks":
         return <Bookmarks searchQuery={searchQuery} />;
-      case "Favorites":
+      case "favorites":
         return <Favorites searchQuery={searchQuery} />;
       default:
         return null;
@@ -53,8 +72,8 @@ const Body = () => {
             type="radio"
             id="tab1"
             name="tab"
-            checked={selectedTab === "Feed"}
-            onClick={() => onTabClick("Feed")}
+            checked={selectedTab === "feed"}
+            onClick={() => onTabClick("feed")}
           />
           <label htmlFor="tab1">Feed</label>
         </li>
@@ -63,14 +82,14 @@ const Body = () => {
             type="radio"
             id="tab2"
             name="tab"
-            onClick={() => onTabClick("Bookmarks", selectedTab)}
+            onClick={() => onTabClick("bookmarks", selectedTab)}
           />
           <label htmlFor="tab2">
             <span>Bookmarks</span>
             <span>
               <IconContainer
                 className="fas fa-sync"
-                visible={selectedTab === "Bookmarks"}
+                visible={selectedTab === "bookmarks"}
                 syncing={syncing}
               ></IconContainer>
             </span>
@@ -81,26 +100,25 @@ const Body = () => {
             type="radio"
             id="tab3"
             name="tab"
-            onClick={() => onTabClick("Favorites", selectedTab)}
+            onClick={() => onTabClick("favorites", selectedTab)}
           />
           <label htmlFor="tab3">
             <span>Favorites</span>
             <span>
               <IconContainer
                 className="fas fa-sync"
-                visible={selectedTab === "Favorites"}
+                visible={selectedTab === "favorites"}
                 syncing={syncing}
               ></IconContainer>
             </span>
           </label>
         </li>
       </ul>
-      <PostsContextProvider>
-        <ContentContainer theme={theme}>
-          <SearchBar onChange={onChange} />
-          {renderSwitch(selectedTab)}
-        </ContentContainer>
-      </PostsContextProvider>
+
+      <ContentContainer theme={theme}>
+        <SearchBar onChange={onChange} />
+        {renderSwitch(selectedTab)}
+      </ContentContainer>
     </TabContainer>
   );
 };
