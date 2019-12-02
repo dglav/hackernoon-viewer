@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const IconTrayContainer = styled.div`
   display: flex;
@@ -13,10 +13,24 @@ export const IconTrayContainer = styled.div`
   border-radius: 10px 0 0 10px;
 `;
 
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(180deg);
+  }
+`;
+
 export const IconContainer = styled.div`
   height: 100%;
   width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .rotate {
+    animation: ${rotate} 1s ease-in-out;
+  }
 `;
