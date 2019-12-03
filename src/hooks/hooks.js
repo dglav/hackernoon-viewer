@@ -8,9 +8,10 @@ export function useFilteredPosts(collection, searchQuery) {
     if (searchQuery) {
       setFilteredPosts(
         collection.filter(post => {
+          const hasUrl = Object.keys(post).includes("url");
           if (
             post.title.toLowerCase().includes(searchQuery) !== false ||
-            post.url.includes(searchQuery) !== false
+            (hasUrl && post.url.includes(searchQuery) !== false)
           )
             return post;
         })
