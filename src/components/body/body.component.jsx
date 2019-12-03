@@ -84,6 +84,7 @@ const Body = () => {
             name="tab"
             checked={selectedTab === "feed"}
             onClick={() => onTabClick("feed")}
+            readOnly
           />
           <label htmlFor="tab1">Feed</label>
         </li>
