@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/hackernoon-viewer/static/css/main.5b1deeec.chunk.css",
+    "main.js": "/hackernoon-viewer/static/js/main.260cef23.chunk.js",
+    "main.js.map": "/hackernoon-viewer/static/js/main.260cef23.chunk.js.map",
+    "runtime-main.js": "/hackernoon-viewer/static/js/runtime-main.1dd65b24.js",
+    "runtime-main.js.map": "/hackernoon-viewer/static/js/runtime-main.1dd65b24.js.map",
+    "static/js/2.06b9f17a.chunk.js": "/hackernoon-viewer/static/js/2.06b9f17a.chunk.js",
+    "static/js/2.06b9f17a.chunk.js.map": "/hackernoon-viewer/static/js/2.06b9f17a.chunk.js.map",
+    "index.html": "/hackernoon-viewer/index.html",
+    "precache-manifest.151697df89b3e96dcf52c6575543ddc6.js": "/hackernoon-viewer/precache-manifest.151697df89b3e96dcf52c6575543ddc6.js",
+    "service-worker.js": "/hackernoon-viewer/service-worker.js",
+    "static/css/main.5b1deeec.chunk.css.map": "/hackernoon-viewer/static/css/main.5b1deeec.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1dd65b24.js",
+    "static/js/2.06b9f17a.chunk.js",
+    "static/css/main.5b1deeec.chunk.css",
+    "static/js/main.260cef23.chunk.js"
+  ]
+}
