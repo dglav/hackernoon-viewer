@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { firestore } from "../../firebase/firebase.utils";
+import React, { useContext } from "react";
+
+import { useFilteredPosts } from "../../hooks/hooks";
 
 import { PostsContext } from "../../context/posts/posts.context";
 import { deleteFavorite } from "../../context/posts/posts.actions";
-import { selectFilteredPosts } from "../../context/posts/posts.selectors";
-
-import {} from "./favorites.styles";
 
 import PostCard from "../post-card/post-card.component";
 
@@ -14,12 +12,8 @@ const Favorites = ({ searchQuery }) => {
     posts: { favorites },
     dispatch
   } = useContext(PostsContext);
-  const [filteredPosts, setFilteredPosts] = useState([]);
 
-  useEffect(() => {
-    const filteredPosts = selectFilteredPosts(favorites, searchQuery);
-    setFilteredPosts(filteredPosts);
-  }, [favorites, searchQuery]);
+  const filteredPosts = useFilteredPosts(favorites, searchQuery);
 
   return (
     <React.Fragment>

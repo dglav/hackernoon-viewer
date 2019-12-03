@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-import { selectFilteredPosts } from "../../context/posts/posts.selectors";
+import { useFilteredPosts } from "../../hooks/hooks";
 
 import PostCard from "../post-card/post-card.component";
 
 const Feed = ({ searchQuery }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
-  const [filteredPosts, setFilteredPosts] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -30,16 +29,12 @@ const Feed = ({ searchQuery }) => {
       Promise.all(posts).then(resolvedPosts => {
         setPosts(resolvedPosts);
         setIsLoading(false);
-        setFilteredPosts(resolvedPosts);
       });
     }
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const filteredPosts = selectFilteredPosts(posts, searchQuery);
-    setFilteredPosts(filteredPosts);
-  }, [searchQuery]);
+  const filteredPosts = useFilteredPosts(posts, searchQuery);
 
   return (
     <React.Fragment>
