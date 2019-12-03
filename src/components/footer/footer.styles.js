@@ -6,3 +6,8 @@ export const FooterContainer = styled.footer`
   text-align: center;
   color: ${props => props.theme.primaryTextColor};
 `;
+
+export const GitIcon = styled.a`
+  color: ${props => props.theme.darkPrimaryColor};
+  font-size: 2em;
+`;
