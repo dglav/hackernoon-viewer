@@ -32,6 +32,12 @@ const postsReducer = (state, action) => {
         ...state,
         favorites: favoritesList
       };
+    case postTypes.REMOVE_SAVED_POSTS:
+      return {
+        ...state,
+        favorites: [],
+        bookmarks: []
+      };
     case postTypes.ADD_BOOKMARK:
       bookmarksList = addPostToList(state.bookmarks, action.payload);
       return {

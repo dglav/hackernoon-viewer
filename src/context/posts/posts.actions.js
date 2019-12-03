@@ -27,3 +27,10 @@ export const deleteBookmark = postId => {
     payload: postId
   };
 };
+
+export const removeSavedPosts = () => {
+  return {
+    type: postTypes.REMOVE_SAVED_POSTS,
+    payload: null
+  };
+};

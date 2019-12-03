@@ -9,8 +9,6 @@ const LoginButton = () => {
   const { user, setUser } = useContext(UserContext);
   const theme = useContext(ThemeContext);
 
-  console.log(theme.lightPrimaryColor);
-
   const clickHandler = user => {
     user ? setUser("") : setUser("defaultUser");
   };

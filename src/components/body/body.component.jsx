@@ -1,8 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "../../context/theme/theme.context";
 import { PostsContext } from "../../context/posts/posts.context";
+import { UserContext } from "../../context/user/user.context";
 
-import { addFavorite, addBookmark } from "../../context/posts/posts.actions";
+import {
+  addFavorite,
+  addBookmark,
+  removeSavedPosts
+} from "../../context/posts/posts.actions";
 
 import {
   readFromDatabase,
@@ -19,20 +24,25 @@ import SearchBar from "../search-bar/search-bar.component";
 const Body = () => {
   const theme = useContext(ThemeContext);
   const { posts, dispatch } = useContext(PostsContext);
+  const { user } = useContext(UserContext);
   const [selectedTab, setSelectedTab] = useState("feed");
   const [searchQuery, setSearchQuery] = useState("");
   const [syncing, setSyncing] = useState(false);
 
   useEffect(() => {
-    async function syncFromDatabase() {
-      const favorites = await readFromDatabase("favorites");
-      favorites.forEach(post => dispatch(addFavorite(post)));
+    if (user) {
+      async function syncFromDatabase() {
+        const favorites = await readFromDatabase("favorites");
+        favorites.forEach(post => dispatch(addFavorite(post)));
 
-      const bookmarks = await readFromDatabase("bookmarks");
-      bookmarks.forEach(post => dispatch(addBookmark(post)));
+        const bookmarks = await readFromDatabase("bookmarks");
+        bookmarks.forEach(post => dispatch(addBookmark(post)));
+      }
+      syncFromDatabase();
+    } else {
+      dispatch(removeSavedPosts());
     }
-    syncFromDatabase();
-  }, []);
+  }, [user]);
 
   const sync = async tabName => {
     setSyncing(true);
@@ -41,7 +51,7 @@ const Body = () => {
   };
 
   const onTabClick = (tabName, ...[currentTab]) => {
-    if (currentTab === tabName) {
+    if (user && currentTab === tabName) {
       sync(tabName);
     }
     setSelectedTab(tabName);
@@ -86,13 +96,15 @@ const Body = () => {
           />
           <label htmlFor="tab2">
             <span>Bookmarks</span>
-            <span>
-              <IconContainer
-                className="fas fa-sync"
-                visible={selectedTab === "bookmarks"}
-                syncing={syncing}
-              ></IconContainer>
-            </span>
+            {user ? (
+              <span>
+                <IconContainer
+                  className="fas fa-sync"
+                  visible={selectedTab === "bookmarks"}
+                  syncing={syncing}
+                ></IconContainer>
+              </span>
+            ) : null}
           </label>
         </li>
         <li>
@@ -104,13 +116,15 @@ const Body = () => {
           />
           <label htmlFor="tab3">
             <span>Favorites</span>
-            <span>
-              <IconContainer
-                className="fas fa-sync"
-                visible={selectedTab === "favorites"}
-                syncing={syncing}
-              ></IconContainer>
-            </span>
+            {user ? (
+              <span>
+                <IconContainer
+                  className="fas fa-sync"
+                  visible={selectedTab === "favorites"}
+                  syncing={syncing}
+                ></IconContainer>
+              </span>
+            ) : null}
           </label>
         </li>
       </ul>

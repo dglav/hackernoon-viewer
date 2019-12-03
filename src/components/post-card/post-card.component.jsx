@@ -5,6 +5,7 @@ import en from "javascript-time-ago/locale/en";
 import IconTray from "../icon-tray/icon-tray.component";
 
 import { ThemeContext } from "../../context/theme/theme.context";
+import { UserContext } from "../../context/user/user.context";
 
 import { PostCardContainer, Title, Subtitle } from "./post-card.styles";
 
@@ -13,6 +14,7 @@ TimeAgo.addLocale(en);
 const PostCard = ({ postData, parent, iconClickHandler }) => {
   const { id, by, time, title, url, score, descendants } = postData;
   const theme = useContext(ThemeContext);
+  const { user } = useContext(UserContext);
 
   const timeAgo = new TimeAgo("en-US");
   const formattedTimeAgo = timeAgo.format(time * 1000);
@@ -22,11 +24,13 @@ const PostCard = ({ postData, parent, iconClickHandler }) => {
   const [iconTrayAnimation, setIconTrayAnimation] = useState("");
 
   const toggleHover = hoverState => {
-    if (hoverState) {
-      setIconTrayVisibility(true);
-      setIconTrayAnimation("slideInRight");
-    } else {
-      setIconTrayAnimation("slideOutRight");
+    if (user) {
+      if (hoverState) {
+        setIconTrayVisibility(true);
+        setIconTrayAnimation("slideInRight");
+      } else {
+        setIconTrayAnimation("slideOutRight");
+      }
     }
   };
 
@@ -48,13 +52,16 @@ const PostCard = ({ postData, parent, iconClickHandler }) => {
           </a>
         </Subtitle>
       </div>
-      <IconTray
-        postData={postData}
-        parent={parent}
-        iconTrayVisibility={iconTrayVisibility}
-        animation={iconTrayAnimation}
-        iconClickHandler={iconClickHandler}
-      />
+
+      {user ? (
+        <IconTray
+          postData={postData}
+          parent={parent}
+          iconTrayVisibility={iconTrayVisibility}
+          animation={iconTrayAnimation}
+          iconClickHandler={iconClickHandler}
+        />
+      ) : null}
     </PostCardContainer>
   );
 };
