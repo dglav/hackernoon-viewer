@@ -9,7 +9,8 @@ export const LoginButtonContainer = styled.button`
   border: 3px solid ${props => props.theme.lightPrimaryColor};
   background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
-  font-weight: bold;
+  font-family: "Tomorrow";
+  font-weight: 600;
 
   &:focus {
     outline: none;

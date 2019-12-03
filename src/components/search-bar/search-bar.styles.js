@@ -28,4 +28,5 @@ export const InputContainer = styled.input`
     props.isInputFocused
       ? props.theme.primaryTextColor
       : props.theme.secondaryTextColor};
+  font-family: "Tomorrow";
 `;
