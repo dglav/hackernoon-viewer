@@ -5,6 +5,7 @@ export const FooterContainer = styled.footer`
   margin: 0 auto;
   text-align: center;
   color: ${props => props.theme.primaryTextColor};
+  margin-bottom: 16px;
 `;
 
 export const GitIcon = styled.a`

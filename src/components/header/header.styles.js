@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
+  font-size: 1.4em;
   background-color: ${props => props.theme.darkPrimaryColor};
   color: ${props => props.theme.primaryTextColor};
   display: flex;

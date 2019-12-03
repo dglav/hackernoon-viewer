@@ -7,6 +7,7 @@ import PostCard from "../post-card/post-card.component";
 const Feed = ({ searchQuery }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
+  const queryCount = 15;
 
   useEffect(() => {
     async function fetchData() {
@@ -16,7 +17,7 @@ const Feed = ({ searchQuery }) => {
       );
       const response = await fetcher.json();
 
-      const responseToDisplay = response.slice(0, 5);
+      const responseToDisplay = response.slice(0, queryCount);
 
       const posts = responseToDisplay.map(async postId => {
         const postFetcher = await fetch(
@@ -39,7 +40,7 @@ const Feed = ({ searchQuery }) => {
   return (
     <React.Fragment>
       {isLoading ? (
-        <p>Loading State</p>
+        <p>Loading...</p>
       ) : (
         <div>
           {filteredPosts.map(post => {

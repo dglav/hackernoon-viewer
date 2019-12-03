@@ -18,3 +18,7 @@ export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const PostListContainer = styled.div`
+  padding: 0 8px;
+`;

@@ -1,7 +1,11 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "../../context/theme/theme.context";
 
-import { BodyContainer, ContentContainer } from "./body.styles";
+import {
+  BodyContainer,
+  ContentContainer,
+  PostListContainer
+} from "./body.styles";
 
 import Tabs from "../tabs/tabs.component";
 import Feed from "../feed/feed.component";
@@ -36,7 +40,7 @@ const Body = () => {
       <Tabs selectedTab={{ selectedTab, setSelectedTab }} />
       <ContentContainer theme={theme}>
         <SearchBar onChange={onChange} />
-        {renderSwitch(selectedTab)}
+        <PostListContainer>{renderSwitch(selectedTab)}</PostListContainer>
       </ContentContainer>
     </BodyContainer>
   );

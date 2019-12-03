@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PostCardContainer = styled.div`
-  padding: 8px;
+  padding: 8px 0;
   position: relative;
   &:first-child {
     #IconTray {

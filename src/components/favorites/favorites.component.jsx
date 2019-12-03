@@ -29,7 +29,7 @@ const Favorites = ({ searchQuery }) => {
           );
         })
       ) : (
-        <p>No favorites</p>
+        <p>No favorites to display. Login and add some!</p>
       )}
     </React.Fragment>
   );
