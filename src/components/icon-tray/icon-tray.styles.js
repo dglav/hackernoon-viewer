@@ -4,7 +4,7 @@ export const IconTrayContainer = styled.div`
   display: flex;
   visibility: ${props => (props.iconTrayVisibility ? "visible" : "hidden")};
   position: absolute;
-  right: 0;
+  right: -8px;
   top: 0;
   justify-content: right;
   align-items: center;
@@ -25,7 +25,7 @@ const rotate = keyframes`
 
 export const IconContainer = styled.div`
   height: 100%;
-  width: 40px;
+  width: 45px;
   display: flex;
   align-items: center;
   justify-content: center;

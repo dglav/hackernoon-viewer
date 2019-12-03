@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-// Lessons Learned:
-// * Be careful where you define flex. If it's in the parent element, it's going to set the height of the entire parent element based on the height of the tallest child.
-// * Labels are inline elements and therefore don't respond to top/bottom padding
-
 export const BodyContainer = styled.div`
   width: 70%;
   box-sizing: border-box;
