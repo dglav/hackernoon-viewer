@@ -29,6 +29,7 @@ export const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   .rotate {
     animation: ${rotate} 1s ease-in-out;
