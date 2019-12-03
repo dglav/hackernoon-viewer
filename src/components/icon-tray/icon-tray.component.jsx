@@ -24,7 +24,6 @@ const IconTray = ({
     } else if (iconName === "favorites") {
       setFavoriteIconHover(!favoriteIconHover);
     } else if (iconName === "remove") {
-      console.log("in remove");
       setRemoveIconHover(!removeIconHover);
     }
   };
