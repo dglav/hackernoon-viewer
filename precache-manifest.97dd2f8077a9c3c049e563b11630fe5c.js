@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7f8fdaebcf595361860fac28259d0be7",
+    "revision": "de5cd0df9f2e10a7e9ea4075367c131b",
     "url": "/hackernoon-viewer/index.html"
   },
   {
-    "revision": "9f9dd55f0ab85a366531",
+    "revision": "30d3f445af9ae24ffb9d",
     "url": "/hackernoon-viewer/static/css/main.5b1deeec.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hackernoon-viewer/static/js/2.06b9f17a.chunk.js"
   },
   {
-    "revision": "9f9dd55f0ab85a366531",
-    "url": "/hackernoon-viewer/static/js/main.260cef23.chunk.js"
+    "revision": "30d3f445af9ae24ffb9d",
+    "url": "/hackernoon-viewer/static/js/main.3aec535f.chunk.js"
   },
   {
     "revision": "47eb6015103f12084a6f",
